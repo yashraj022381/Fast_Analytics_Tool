@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "🚀 Build Fast Analytics",
+            "type": "cmake",
+            "command": "build",
+            "options": {
+                "buildDir": "${workspaceFolder}/build"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "🚀 Run Fast Analytics",
+            "type": "shell",
+            "command": "${workspaceFolder}/build/fast_analytics.exe",
+            "args": ["--group", "City", "--top", "5"],
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "focus": true
+            },
+            "dependsOn": "🚀 Build Fast Analytics"
+        }
+    ]
+}
