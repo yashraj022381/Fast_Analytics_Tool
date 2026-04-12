@@ -1,0 +1,47 @@
+{
+  "group_by": "City",
+  "results": {
+    "Health and beauty": {
+      "count": 152,
+      "sum_total": 49193.74,
+      "avg_rating": 7.00,
+      "min_total": 18.64,
+      "max_total": 950.25
+    },
+    "Home and lifestyle": {
+      "count": 160,
+      "sum_total": 53861.91,
+      "avg_rating": 6.84,
+      "min_total": 14.68,
+      "max_total": 1023.75
+    },
+    "Fashion accessories": {
+      "count": 178,
+      "sum_total": 54305.89,
+      "avg_rating": 7.03,
+      "min_total": 12.69,
+      "max_total": 1042.65
+    },
+    "Electronic accessories": {
+      "count": 170,
+      "sum_total": 54337.53,
+      "avg_rating": 6.92,
+      "min_total": 26.72,
+      "max_total": 942.45
+    },
+    "Sports and travel": {
+      "count": 166,
+      "sum_total": 55122.83,
+      "avg_rating": 6.92,
+      "min_total": 10.68,
+      "max_total": 1002.12
+    },
+    "Food and beverages": {
+      "count": 174,
+      "sum_total": 56144.84,
+      "avg_rating": 7.11,
+      "min_total": 22.66,
+      "max_total": 1034.46
+    }
+  }
+}
