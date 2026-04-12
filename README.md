@@ -35,21 +35,22 @@
 
 
 📂 File Structure
-    fast_analytics/
-    ├── CMakeLists.txt
-    ├── README.md
-    ├── data/
-    │   └── sample.csv           ← 1000 rows of supermarket data included
-    ├── src/
-    │   ├── main.cpp
-    │   ├── csv_parser.cpp / .h
-    │   ├── analytics.cpp / .h
-    │   ├── thread_pool.cpp / .h
-    │   └── exporter.cpp / .h
-    ├── results.csv
-    ├── results.json
-    ├── results.html          ← New!
-    └── .vscode/tasks.json
+
+  fast_analytics/
+  ├── CMakeLists.txt
+  ├── README.md
+  ├── data/
+  │   └── sample.csv           ← 1000 rows of supermarket data included
+  ├── src/
+  │   ├── main.cpp
+  │   ├── csv_parser.cpp / .h
+  │   ├── analytics.cpp / .h
+  │   ├── thread_pool.cpp / .h
+  │   └── exporter.cpp / .h
+  ├── results.csv
+  ├── results.json
+  ├── results.html          
+  └── .vscode/tasks.json
 
   
 🛠️ Architecture
