@@ -37,16 +37,16 @@
 📂 File Structure
 
   fast_analytics/
-  ├── CMakeLists.txt
+  ├── CMakeLists.txt             ← auto-copies data/ next to .exe
   ├── README.md
   ├── data/
-  │   └── sample.csv           ← 1000 rows of supermarket data included
+  │   └── sample.csv             ← 1000 rows of supermarket data included
   ├── src/
-  │   ├── main.cpp
+  │   ├── main.cpp               ← all features wired together
   │   ├── csv_parser.cpp / .h
   │   ├── analytics.cpp / .h
   │   ├── thread_pool.cpp / .h
-  │   └── exporter.cpp / .h
+  │   └── exporter.cpp / .h      ← working HTML/CSV/JSON export
   ├── results.csv
   ├── results.json
   ├── results.html          
