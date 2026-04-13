@@ -37,7 +37,9 @@
 📂 File Structure
 
   fast_analytics/
+  
   ├── CMakeLists.txt             ← auto-copies data/ next to .exe
+  
   ├── README.md
   ├── data/
   │   └── sample.csv             ← 1000 rows of supermarket data included
