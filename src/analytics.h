@@ -2,14 +2,15 @@
 #include <vector>
 #include <string>
 #include <unordered_map>
+#include <mutex>
 #include "thread_pool.h"
 
 struct GroupStats {
-    long long count = 0;
-    double sum_total = 0.0;
-    double sum_rating = 0.0;
-    double min_total = 1e9;
-    double max_total = 0.0;
+    long long count      = 0;
+    double    sum_total  = 0.0;
+    double    sum_rating = 0.0;
+    double    min_total  = 1e18;
+    double    max_total  = 0.0;
 };
 
 class Analytics {
@@ -19,9 +20,20 @@ public:
              ThreadPool& pool,
              const std::string& group_column);
 
-    std::unordered_map<std::string, GroupStats> get_results() const { return results; }
+    std::unordered_map<std::string, GroupStats> get_results() const {
+        return results;
+    }
+
+    void reset() { results.clear(); }
 
 private:
     std::unordered_map<std::string, GroupStats> results;
     std::mutex results_mutex;
 };
+
+
+
+
+
+
+
