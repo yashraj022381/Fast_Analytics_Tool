@@ -37,27 +37,20 @@
 📂 File Structure
 
   fast_analytics/
-  
-  ├── CMakeLists.txt             ← auto-copies data/ next to .exe
-  
-  ├── README.md
-  
-  ├── data/
-  │   └── sample.csv             ← 1000 rows of supermarket data included
-  
-  ├── src/
-  │   ├── main.cpp               ← all features wired together
-  │   ├── csv_parser.cpp / .h
-  │   ├── analytics.cpp / .h
-  │   ├── thread_pool.cpp / .h
-  │   └── exporter.cpp / .h      ← working HTML/CSV/JSON export
-  
-  ├── results.csv
-  ├── results.json
-  ├── results.html
-  
-  └── .vscode/tasks.json
-
+├── CMakeLists.txt
+├── data/
+│   └── sample.csv            # Kaggle supermarket sales dataset
+└── src/
+    ├── main.cpp              # CLI entry point — all flags wired here
+    ├── analytics.h/.cpp      # Parallel group-by engine (4 threads)
+    ├── thread_pool.h/.cpp    # Custom thread pool with wait_all()
+    ├── csv_parser.h/.cpp     # Fast CSV reader with quoted-field support
+    ├── exporter.h/.cpp       # JSON / CSV / HTML report exporter
+    ├── filter.h/.cpp         # Row filtering before analytics
+    ├── describe.h/.cpp       # Deep statistical analysis
+    ├── chart.h/.cpp          # ASCII bar chart renderer
+    ├── benchmark.h/.cpp      # Multi-run timing benchmark
+    └── summary.h/.cpp        # Dataset overview (like pandas df.info())
   
 🛠️ Architecture
   - main.cpp: Entry point handling CLI arguments and orchestrating the workflow.
@@ -70,6 +63,31 @@
 
   - exporter: Logic for converting processed statistics into final report files.
 
+💻 Usage
+  fast_analytics.exe [flags]
+ 
+  Core Flags
+  Flag                     Description                           Example                                                                                                       --group <column>         Group-by analytics                    --group City
+  --input <file>           Custom CSV path                       --input data/sales.csv
+  --output <prefix>        Output filename prefix                --output city_report
+  --top <N>                Show only top N groups                --top 5
+  --sort <field>           Sort by field                         --sort avg_rating
+  --threads <N>            Worker thread count                   --threads 8
+  --columns                List all column names                 --columns
+  --help                   Show full help                        --help
+  
+  --sort fields: sum_total (default) · count · avg_rating
+  
+  Advanced Flags
+  Flag                     Description                           Example
+  --filter <expr>          Filter rows before analytics          --filter "City=Yangon"
+  --describe <col>         Deep stats on a column                --describe Total
+  --chart [field]          ASCII bar chart in terminal           --chart count
+  --benchmark [N]          Timing benchmark over N runs          --benchmark 10
+  --summary                Dataset overview                      --summary
+  
+  --filter operators: = · != · > · < · >= · <=
+  Multiple --filter flags apply AND logic.
 
 
 📋 Prerequisites
