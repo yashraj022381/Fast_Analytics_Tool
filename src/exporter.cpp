@@ -1,4 +1,3 @@
-// exporter.cpp — COMPLETE FIXED FILE
 #include "exporter.h"
 #include <fstream>
 #include <iomanip>
