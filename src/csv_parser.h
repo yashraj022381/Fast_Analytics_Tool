@@ -8,6 +8,10 @@ public:
     bool read(const std::string& filename,
               std::vector<std::vector<std::string>>& data,
               std::vector<std::string>& headers);
+
+     // Print all columns with their index — used by --columns flag
+    static void print_columns(const std::vector<std::string>& headers);
+
 private:
     // Helper: splits one line by commas (simple version for our Kaggle file)
     std::vector<std::string> split(const std::string& line);
