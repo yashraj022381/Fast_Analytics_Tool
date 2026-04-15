@@ -8,18 +8,19 @@
 **High-Performance CSV Analytics Engine built in Modern C++20**
 
 - A high-performance, multi-threaded C++20 tool designed for rapid processing and analysis of large CSV datasets. 
-- This tool utilizes a custom thread pool architecture to parallelize data aggregation and provides multiple export formats including HTML, JSON, and CSV.
+- This tool utilizes a custom thread pool architecture to parallelize data aggregation and provides multiple export formats    including HTML, JSON, and CSV.
 - A blazing-fast command-line tool that processes millions of rows with multithreading — 5-10x faster than Pandas.
 
 
 🚀 Features
-  - Multithreaded Processing: Leverages a custom-built Thread Pool to distribute data analysis tasks across multiple CPU cores.
+
+  - Multithreaded Processing: Leverages a custom-built Thread Pool to distribute data analysis tasks across multiple CPU         cores.
 
   - C++20 Implementation: Utilizes modern C++ features for efficiency and type safety.
 
   - Robust CSV Parsing: Fast and flexible parsing of tabular data.
 
-  - Dynamic Grouping: Perform data aggregation (counts, sums, averages, min/max) based on specific columns (e.g., City, Product Line).
+  - Dynamic Grouping: Perform data aggregation (counts, sums, averages, min/max) based on specific columns (e.g., City,          Product Line).
 
   - Colored terminal output + Progress bar
 
@@ -36,6 +37,7 @@
 🛠️ Technology Stack
 
   Technology                        Usage
+  
   C++20                             Core language — structured bindings, [[nodiscard]], ranges
   STL                               unordered_map, vector, sort, accumulate, chrono
   std::thread / mutex               Custom thread pool with 4 parallel workers
@@ -62,6 +64,7 @@
     ├── chart.h/.cpp          # ASCII bar chart renderer
     ├── benchmark.h/.cpp      # Multi-run timing benchmark
     └── summary.h/.cpp        # Dataset overview (like pandas df.info())
+
 
 ⚙️ Build Instructions
 
@@ -100,10 +103,14 @@
   
 
 💻 Usage
+
   fast_analytics.exe [flags]
  
   Core Flags
-   Flag                     Description                           Example                                                                                                       --group <column>         Group-by analytics                    --group City
+  
+   Flag                     Description                           Example
+   
+   --group <column>         Group-by analytics                    --group City
    --input <file>           Custom CSV path                       --input data/sales.csv
    --output <prefix>        Output filename prefix                --output city_report
    --top <N>                Show only top N groups                --top 5
@@ -115,7 +122,9 @@
    --sort fields: sum_total (default) · count · avg_rating
   
   Advanced Flags
+  
    Flag                     Description                           Example
+   
    --filter <expr>          Filter rows before analytics          --filter "City=Yangon"
    --describe <col>         Deep stats on a column                --describe Total
    --chart [field]          ASCII bar chart in terminal           --chart count
@@ -127,6 +136,7 @@
 
 
  🗂 Dataset
+ 
  - Uses the Supermarket Sales dataset from Kaggle.
    
  - Place the CSV at: data/sample.csv (or use --input to specify any path).
@@ -273,6 +283,7 @@
     - Processed 1000 rows in avg 0 ms using 4 threads (5000000+ rows/sec)
    
 🧠 Architecture Deep Dive
+
   - Thread Pool Design
     - The core parallelism engine uses a producer-consumer pattern:
       main thread                    worker threads (×4)
@@ -292,22 +303,25 @@
   - This guarantees all threads have finished before get_results() is ever called.
    
   - Filter Engine
-   - Row filtering uses compile-time operator dispatch — numeric comparisons (>, <, >=, <=) parse strings to double on the fly, while string comparisons (=, !=) use direct       equality.
+   - Row filtering uses compile-time operator dispatch — numeric comparisons (>, <, >=, <=) parse strings to double on the        fly, while string comparisons (=, !=) use direct       equality.
    - Multiple filters apply AND logic — a row must pass every filter to be kept.
      
   - Statistics Engine
-   - --describe computes 16 statistics in a single pass over the data (for mean/sum/variance) plus one sort (for median/percentiles).
+   - --describe computes 16 statistics in a single pass over the data (for mean/sum/variance) plus one sort (for                    median/percentiles).
    - Skewness uses the Fisher-Pearson formula. Mode is computed via a frequency map rounded to 1 decimal place.
     
       
 📤 Output Formats
+
   - The tool generates an output/ directory containing:
     - results.json: A machine-readable summary.  
     - results.csv: A raw data summary.
     - report.html: A visual dashboard with a "Sales Contribution" bar chart.   
 
   - Every analysis run produces three output files automatically:
+    
     File                Format             Use case
+    
     results.json        JSON object        APIs, Python, web dashboards
     results.csv         CSV table          Excel, Google Sheets, pandas
     results.html        Dark-theme HTML    Browser report with visual bars
@@ -316,6 +330,7 @@
 
 
 🔧 Extending the Tool
+
   - To add a new analytics operation:
     - Create src/myfeature.h and src/myfeature.cpp
     - Add src/myfeature.cpp to CMakeLists.txt
