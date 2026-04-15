@@ -34,13 +34,14 @@
     - CSV: Clean, comma-separated values for further spreadsheet analysis.
    
 🛠️ Technology Stack
-    Technology                        Usage
-    C++20                             Core language — structured bindings, [[nodiscard]], ranges
-    STL                               unordered_map, vector, sort, accumulate, chrono
-    std::thread / mutex               Custom thread pool with 4 parallel workers
-    condition_variable                Worker sleep/wake for zero CPU idle cost
-    CMake 3.14+                       Cross-platform build system
-    ofstream / ifstream               Direct file I/O without wrappers
+
+  Technology                        Usage
+  C++20                             Core language — structured bindings, [[nodiscard]], ranges
+  STL                               unordered_map, vector, sort, accumulate, chrono
+  std::thread / mutex               Custom thread pool with 4 parallel workers
+  condition_variable                Worker sleep/wake for zero CPU idle cost
+  CMake 3.14+                       Cross-platform build system
+  ofstream / ifstream               Direct file I/O without wrappers
 
 
 
@@ -71,6 +72,7 @@
       C++ Standard          C++20
       RAM                   512 MB (for 1M row datasets)
       OS                    Windows 10+ · Ubuntu 20.04+ · macOS 12+
+     
 
    - Windows (Visual Studio / PowerShell)
      powershell
@@ -82,6 +84,7 @@
      cmake ..
      cmake --build . --config Release
      cd ..
+
      
    - Linux / macOS
      bash
@@ -295,6 +298,7 @@
   - Statistics Engine
    - --describe computes 16 statistics in a single pass over the data (for mean/sum/variance) plus one sort (for median/percentiles).
    - Skewness uses the Fisher-Pearson formula. Mode is computed via a frequency map rounded to 1 decimal place.
+    
       
 📤 Output Formats
   - The tool generates an output/ directory containing:
@@ -318,6 +322,7 @@
     - Add #include "myfeature.h" in main.cpp
     - Add argument parsing in the for loop in main()
     - Call your function after the filter step
+
 
 📄 License
   - This project is open-source and available under the MIT License.
